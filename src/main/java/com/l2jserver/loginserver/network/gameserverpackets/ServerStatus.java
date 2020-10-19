@@ -81,21 +81,11 @@ public class ServerStatus extends BaseRecievePacket {
 				int type = readD();
 				int value = readD();
 				switch (type) {
-					case SERVER_LIST_STATUS:
-						gsi.setStatus(value);
-						break;
-					case SERVER_LIST_SQUARE_BRACKET:
-						gsi.setShowingBrackets(value == ON);
-						break;
-					case MAX_PLAYERS:
-						gsi.setMaxPlayers(value);
-						break;
-					case SERVER_TYPE:
-						gsi.setServerType(value);
-						break;
-					case SERVER_AGE:
-						gsi.setAgeLimit(value);
-						break;
+					case SERVER_LIST_STATUS -> gsi.setStatus(value);
+					case SERVER_LIST_SQUARE_BRACKET -> gsi.setShowingBrackets(value == ON);
+					case MAX_PLAYERS -> gsi.setMaxPlayers(value);
+					case SERVER_TYPE -> gsi.setServerType(value);
+					case SERVER_AGE -> gsi.setAgeLimit(value);
 				}
 			}
 		}

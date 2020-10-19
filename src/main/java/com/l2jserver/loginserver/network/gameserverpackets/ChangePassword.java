@@ -70,7 +70,7 @@ public class ChangePassword extends BaseRecievePacket {
 				final var raw = md.digest(curpass.getBytes(UTF_8));
 				String curpassEnc = Base64.getEncoder().encodeToString(raw);
 				String pass = null;
-				int passUpdated = 0;
+				int passUpdated;
 				
 				try (var con = ConnectionFactory.getInstance().getConnection();
 					var ps = con.prepareStatement("SELECT password FROM accounts WHERE login=?")) {

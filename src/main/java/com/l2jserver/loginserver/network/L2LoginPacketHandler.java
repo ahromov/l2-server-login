@@ -49,36 +49,24 @@ public final class L2LoginPacketHandler implements PacketHandler<L2LoginClient> 
 		
 		switch (state) {
 			case CONNECTED:
-				switch (opcode) {
-					case 0x07:
-						packet = new AuthGameGuard();
-						break;
-					default:
-						debugOpcode(opcode, state);
-						break;
+				if (opcode == 0x07) {
+					packet = new AuthGameGuard();
+				} else {
+					debugOpcode(opcode, state);
 				}
 				break;
 			case AUTHED_GG:
-				switch (opcode) {
-					case 0x00:
-						packet = new RequestAuthLogin();
-						break;
-					default:
-						debugOpcode(opcode, state);
-						break;
+				if (opcode == 0x00) {
+					packet = new RequestAuthLogin();
+				} else {
+					debugOpcode(opcode, state);
 				}
 				break;
 			case AUTHED_LOGIN:
 				switch (opcode) {
-					case 0x02:
-						packet = new RequestServerLogin();
-						break;
-					case 0x05:
-						packet = new RequestServerList();
-						break;
-					default:
-						debugOpcode(opcode, state);
-						break;
+					case 0x02 -> packet = new RequestServerLogin();
+					case 0x05 -> packet = new RequestServerList();
+					default -> debugOpcode(opcode, state);
 				}
 				break;
 		}

@@ -48,7 +48,7 @@ public class L2JGameServerPacketHandler {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(L2JGameServerPacketHandler.class);
 	
-	public static enum GameServerState {
+	public enum GameServerState {
 		CONNECTED,
 		BF_CONNECTED,
 		AUTHED
@@ -60,25 +60,19 @@ public class L2JGameServerPacketHandler {
 		GameServerState state = server.getLoginConnectionState();
 		switch (state) {
 			case CONNECTED:
-				switch (opcode) {
-					case 0x00:
-						msg = new BlowFishKey(data, server);
-						break;
-					default:
-						LOG.warn("Unknown Opcode {} in state {} from game server, closing connection!", Integer.toHexString(opcode).toUpperCase(), state);
-						server.forceClose(LoginServerFail.NOT_AUTHED);
-						break;
+				if (opcode == 0x00) {
+					msg = new BlowFishKey(data, server);
+				} else {
+					LOG.warn("Unknown Opcode {} in state {} from game server, closing connection!", Integer.toHexString(opcode).toUpperCase(), state);
+					server.forceClose(LoginServerFail.NOT_AUTHED);
 				}
 				break;
 			case BF_CONNECTED:
-				switch (opcode) {
-					case 0x01:
-						msg = new GameServerAuth(data, server);
-						break;
-					default:
-						LOG.warn("Unknown Opcode {} in state {} from game server, closing connection!", Integer.toHexString(opcode).toUpperCase(), state);
-						server.forceClose(LoginServerFail.NOT_AUTHED);
-						break;
+				if (opcode == 0x01) {
+					msg = new GameServerAuth(data, server);
+				} else {
+					LOG.warn("Unknown Opcode {} in state {} from game server, closing connection!", Integer.toHexString(opcode).toUpperCase(), state);
+					server.forceClose(LoginServerFail.NOT_AUTHED);
 				}
 				break;
 			case AUTHED:

@@ -62,12 +62,12 @@ public class LoginController {
 	public static final int LOGIN_TIMEOUT = 60 * 1000;
 	
 	/** Authed Clients on LoginServer */
-	protected Map<String, L2LoginClient> _loginServerClients = new ConcurrentHashMap<>();
+	protected final Map<String, L2LoginClient> _loginServerClients = new ConcurrentHashMap<>();
 	
 	private final Map<InetAddress, Integer> _failedLoginAttempts = new ConcurrentHashMap<>();
 	private final Map<InetAddress, Long> _bannedIps = new ConcurrentHashMap<>();
 	
-	protected ScrambledKeyPair[] _keyPairs;
+	protected final ScrambledKeyPair[] _keyPairs;
 	
 	protected byte[][] _blowfishKeys;
 	private static final int BLOWFISH_KEYS = 20;

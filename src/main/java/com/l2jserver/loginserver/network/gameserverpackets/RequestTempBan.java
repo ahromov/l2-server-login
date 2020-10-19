@@ -41,7 +41,7 @@ public class RequestTempBan extends BaseRecievePacket {
 	
 	private final String _ip;
 	
-	private long _banTime;
+	private final long _banTime;
 	
 	public RequestTempBan(byte[] decrypt) {
 		super(decrypt);

@@ -326,22 +326,15 @@ public final class GameServerTable {
 		}
 		
 		public String getStatusName() {
-			switch (_status) {
-				case 0:
-					return "Auto";
-				case 1:
-					return "Good";
-				case 2:
-					return "Normal";
-				case 3:
-					return "Full";
-				case 4:
-					return "Down";
-				case 5:
-					return "GM Only";
-				default:
-					return "Unknown";
-			}
+			return switch (_status) {
+				case 0 -> "Auto";
+				case 1 -> "Good";
+				case 2 -> "Normal";
+				case 3 -> "Full";
+				case 4 -> "Down";
+				case 5 -> "GM Only";
+				default -> "Unknown";
+			};
 		}
 		
 		/**

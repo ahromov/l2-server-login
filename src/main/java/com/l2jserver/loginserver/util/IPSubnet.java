@@ -114,7 +114,7 @@ public class IPSubnet {
 		return false;
 	}
 	
-	private static final byte[] getMask(int n, int maxLength) throws UnknownHostException {
+	private static byte[] getMask(int n, int maxLength) throws UnknownHostException {
 		if ((n > (maxLength << 3)) || (n < 0)) {
 			throw new UnknownHostException("Invalid netmask: " + n);
 		}

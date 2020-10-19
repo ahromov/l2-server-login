@@ -54,7 +54,7 @@ public enum GameServerVersion {
 	PREULDE_OF_WAR(29, "Prelude of War"),
 	DAWN_OF_HEROES(30, "Dawn of Heroes");
 	
-	static Map<Integer, String> versions = new HashMap<>();
+	static final Map<Integer, String> versions = new HashMap<>();
 	
 	int id;
 	

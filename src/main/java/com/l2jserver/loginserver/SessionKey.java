@@ -27,10 +27,10 @@ import static com.l2jserver.loginserver.config.Configuration.server;
  * @version 2.6.1.0
  */
 public class SessionKey {
-	public int playOkID1;
-	public int playOkID2;
-	public int loginOkID1;
-	public int loginOkID2;
+	public final int playOkID1;
+	public final int playOkID2;
+	public final int loginOkID1;
+	public final int loginOkID2;
 	
 	public SessionKey(int loginOK1, int loginOK2, int playOK1, int playOK2) {
 		playOkID1 = playOK1;

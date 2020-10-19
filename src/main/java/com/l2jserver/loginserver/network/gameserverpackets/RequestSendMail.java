@@ -26,19 +26,16 @@ import com.l2jserver.loginserver.mail.MailSystem;
  * @version 2.6.1.0
  */
 public class RequestSendMail extends BaseRecievePacket {
-	String _accountName, _mailId;
-	String[] _args;
-	
+
 	public RequestSendMail(byte[] decrypt) {
 		super(decrypt);
-		_accountName = readS();
-		_mailId = readS();
+		String accountName = readS();
+		String mailId = readS();
 		int argNum = readC();
-		_args = new String[argNum];
+		String[] args = new String[argNum];
 		for (int i = 0; i < argNum; i++) {
-			_args[i] = readS();
+			args[i] = readS();
 		}
-		
-		MailSystem.getInstance().sendMail(_accountName, _mailId, _args);
+		MailSystem.getInstance().sendMail(accountName, mailId, args);
 	}
 }

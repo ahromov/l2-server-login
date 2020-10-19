@@ -61,12 +61,12 @@ public class MailSystem {
 		factory.setValidating(false);
 		factory.setIgnoringComments(true);
 		File file = new File(server().getDatapackRoot() + "data/mail/MailList.xml");
-		Document doc = null;
 		if (!file.exists()) {
 			LOG.warn("Cannot load email system - Missing file MailList.xml");
 			return;
 		}
-		
+
+		Document doc;
 		try {
 			doc = factory.newDocumentBuilder().parse(file);
 		} catch (Exception ex) {
@@ -102,7 +102,7 @@ public class MailSystem {
 		LOG.info("Email system loaded.");
 	}
 	
-	public class MailContent {
+	public static class MailContent {
 		private final String _subject;
 		private final String _text;
 		
