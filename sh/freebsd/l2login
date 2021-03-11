@@ -8,6 +8,7 @@
  
 name="l2login"
 rcvar="l2login_enable"
+<<<<<<< HEAD
 folder="/usr/home/andrew/l2jlogin/"
 goprogram_user="andrew"
 pidfile="/usr/home/${goprogram_user}/l2jlogin/run/${name}.pid"
@@ -21,6 +22,20 @@ goprogram_start() {
 	cd ${folder}
 	./LoginServer_loop.sh ${pidfile} ${goprogram_user}
 
+=======
+folder="/usr/home/andrew/l2j-server-login/"
+goprogram_user="andrew"
+pidfile=/usr/home/${goprogram_user}/l2j-server-login/run/${name}.pid
+ 
+start_cmd="goprogram_start"
+stop_cmd="goprogram_stop"
+status_cmd="goprogram_status"
+
+goprogram_start() {
+	echo "${name} starting ..."
+	cd ${folder}
+	./LoginServer_loop.sh ${pidfile} ${goprogram_user}
+>>>>>>> branch 'master' of https://github.com/ahromov/l2-server-login.git
 }
 
 goprogram_stop() {
